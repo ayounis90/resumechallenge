@@ -1,9 +1,24 @@
 variable "domainName" {
-  default = "www.example.com"
+  default = "aneilyounis.com"
+  type    = string
+}
+
+variable "region" {
+  default = "us-east-1"
   type    = string
 }
 
 variable "bucketName" {
-  default = "www.example.com"
+  default = "aneilresumechallengebucket"
+  type    = string
+}
+
+variable "sharedProfile" {
+  default = "shared"
+  type    = string
+}
+
+variable "devProfile" {
+  default = "dev"
   type    = string
 }
