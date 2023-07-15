@@ -9,20 +9,22 @@ resource "aws_s3_bucket" "resume_challenge" {
 
 resource "aws_s3_object" "upload_assets" {
   for_each = fileset(local.resume_files, "**")
-  provider = aws.shared
-  bucket = aws_s3_bucket.resume_challenge.id
-  key = each.key
-  source = "${local.resume_files}/${each.value}"
+  provider = aws.dev
+  bucket   = aws_s3_bucket.resume_challenge.id
+  key      = each.key
+  source   = "${local.resume_files}/${each.value}"
 }
 
-resource "aws_s3_bucket_website_configuration" "resume_config" {
+resource "aws_s3_bucket_website_configuration" "resume_website_config" {
+  provider = aws.dev
   bucket = aws_s3_bucket.resume_challenge.id
-  index_document = {
+  index_document {
     suffix = "index.html"
   }
 }
 
 resource "aws_s3_bucket_policy" "resume_challenge_policy" {
+  provider = aws.dev
   bucket = aws_s3_bucket.resume_challenge.id
   policy = templatefile("s3-policy.json", { bucket = var.bucketName })
 }
