@@ -9,7 +9,7 @@ variable "region" {
 }
 
 variable "bucketName" {
-  default = "aneilresumechallengebucket"
+  default = "aneilresumechallenge"
   type    = string
 }
 
