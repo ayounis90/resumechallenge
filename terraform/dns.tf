@@ -1,5 +1,5 @@
 resource "aws_route53_zone" "primary" {
-    provider = aws.dev
-    name = var.domainName
+  provider = aws.dev
+  name     = var.domainName
 }
 
