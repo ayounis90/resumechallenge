@@ -22,3 +22,9 @@ variable "devProfile" {
   default = "dev"
   type    = string
 }
+
+# Controls which environment will be deployed to
+variable "provider_env" {
+  default = "dev"
+  type    = string
+}
