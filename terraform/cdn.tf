@@ -3,7 +3,7 @@ locals {
 }
 
 resource "aws_cloudfront_origin_access_control" "cloudfront_s3_oac" {
-  provider                          = aws.dev
+  provider                          = aws.shared
   name                              = "Cloudfront S3 OAC"
   description                       = "Cloud Front S3 OAC"
   origin_access_control_origin_type = "s3"
@@ -12,7 +12,7 @@ resource "aws_cloudfront_origin_access_control" "cloudfront_s3_oac" {
 }
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
-  provider = aws.dev
+  provider = aws.shared
 
   origin {
     domain_name              = aws_s3_bucket.resume_challenge.bucket_regional_domain_name
@@ -39,8 +39,12 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     max_ttl     = 86400
   }
 
+  aliases = [var.domainName]
+
   viewer_certificate {
-    cloudfront_default_certificate = true
+    #cloudfront_default_certificate = true
+    acm_certificate_arn  = aws_acm_certificate.cert.arn
+    ssl_support_method = "sni-only"
   }
 
   restrictions {

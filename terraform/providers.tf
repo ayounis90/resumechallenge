@@ -9,3 +9,9 @@ provider "aws" {
   region  = var.region
   alias   = "dev"
 }
+
+provider "aws" {
+  profile = var.prodProfile
+  region  = var.region
+  alias   = "prod"
+}
