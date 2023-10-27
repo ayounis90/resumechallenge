@@ -1,5 +1,5 @@
 variable "domainName" {
-  default = "aneilyounisresume.com"
+  default = "aneilyresume.com"
   type    = string
 }
 

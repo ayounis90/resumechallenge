@@ -1,7 +1,7 @@
-import {
-  to = aws_route53_zone.primary
-  id = "Z04526341KL44H62MYGB6"
-}
+#import {
+#  to = aws_route53_zone.primary
+#  id = "Z04526341KL44H62MYGB6"
+#}
 
 resource "aws_route53_zone" "primary" {
   provider = aws.shared
